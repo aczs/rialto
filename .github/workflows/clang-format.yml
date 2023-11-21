@@ -66,7 +66,7 @@ jobs:
       # Run the prgram with rialto config
       - name: Run clang-format
         run: |
-              echo "::warning Code coverage decreased2"
+              echo "::warning::Code coverage decreased2"
               find . -regex '.*\.\(cpp\|hpp\|cu\|c\|h\)' -exec clang-format-12 -style=file -n --Werror {} \; &> clang-format_errors.log
 
       # Process the clang-format errors and generate a junit xml file
@@ -76,7 +76,7 @@ jobs:
         if: failure() || success()
         run: |
               python scripts/clang-format/process_clang-format_errors.py
-              echo "::warning Code coverage decreased"
+              echo "::warning::Code coverage decreased"
 
       # Report the errors on failure using the xml file
       - name: Check results
