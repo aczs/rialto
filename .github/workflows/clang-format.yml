@@ -21,6 +21,7 @@
 # correct. This workflow shall fail if any code has been changed by clang-format. Logs
 # are uploaded on failure.
 
+
 name: clang-format
 
 
