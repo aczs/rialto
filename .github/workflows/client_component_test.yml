@@ -17,6 +17,7 @@
 # limitations under the License.
 #
 
+
 # This workflow builds and runs the rialto client component tests. The workflow shall fail if any test fails
 # and the results of the tests are checked and displayed in github. Coverage of the api interfaces are also
 # checked, the workflow shall fail if these are not 100% covered. Logs are uploaded on failure.
