@@ -42,16 +42,18 @@ jobs:
 
       - name: Build Rialto
         run: |
-          pkg-config --cflags gstreamer-1.0 > output_file.txt 2>&1
-          pkg-config --libs gstreamer-1.0 >> output_file.txt 2>&1
           wget https://gstreamer.freedesktop.org/data/pkg/osx/1.22.10/gstreamer-1.0-1.22.10-universal.pkg
           wget https://gstreamer.freedesktop.org/data/pkg/osx/1.22.10/gstreamer-1.0-devel-1.22.10-universal.pkg
           sudo installer -pkg gstreamer-1.0-1.22.10-universal.pkg -target /
           sudo installer -pkg gstreamer-1.0-devel-1.22.10-universal.pkg -target /
 
           ls -l /Library/Frameworks/ >> output_file.txt 2>&1
+          pkg-config --cflags gstreamer-1.0 > output_file.txt 2>&1
+          pkg-config --libs gstreamer-1.0 >> output_file.txt 2>&1
           #export PKG_CONFIG_PATH=/Library/Frameworks/GStreamer.framework/Versions/1.0/lib/pkgconfig
           #export PATH=/Library/Frameworks/GStreamer.framework/Versions/1.0/bin:$PATH
+          #pkg-config --cflags gstreamer-1.0 > output_file.txt 2>&1
+          #pkg-config --libs gstreamer-1.0 >> output_file.txt 2>&1
           cmake . -B build -DNATIVE_BUILD=ON -DRIALTO_BUILD_TYPE="Debug" >> output_file.txt 2>&1
           if [ $? -eq 0 ]
           then
