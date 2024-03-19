@@ -78,6 +78,13 @@ target_include_directories(
       ${GStreamerApp_INCLUDE_DIRS}
 )
 
+target_link_libraries(
+        ocdm
+
+        PRIVATE
+        ${GStreamerApp_LIBRARIES}
+)
+
 set_target_properties(
         ocdm
         PROPERTIES SOVERSION  ${PROJECT_VERSION_MAJOR}
