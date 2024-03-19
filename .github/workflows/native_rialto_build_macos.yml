@@ -42,8 +42,8 @@ jobs:
 
       - name: Build Rialto
         run: |
-          wget https://gstreamer.freedesktop.org/data/pkg/osx/1.22.10/gstreamer-1.0-1.22.10-universal.pkg
-          wget https://gstreamer.freedesktop.org/data/pkg/osx/1.22.10/gstreamer-1.0-devel-1.22.10-universal.pkg
+          wget https://gstreamer.freedesktop.org/data/pkg/osx/1.22.10/gstreamer-1.0-1.22.10-universal.pkg >> output_file.txt 2>&1
+          wget https://gstreamer.freedesktop.org/data/pkg/osx/1.22.10/gstreamer-1.0-devel-1.22.10-universal.pkg >> output_file.txt 2>&1
           sudo installer -pkg gstreamer-1.0-1.22.10-universal.pkg -target /
           sudo installer -pkg gstreamer-1.0-devel-1.22.10-universal.pkg -target /
 
