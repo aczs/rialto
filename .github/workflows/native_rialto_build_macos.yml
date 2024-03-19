@@ -44,8 +44,9 @@ jobs:
       - name: Build Rialto
         run: |
           pkg-config --cflags gstreamer-1.0 > output_file.txt 2>&1
-          ls -l /Library/Frameworks/GStreamer.framework/Versions/1.0/bin >> output_file.txt 2>&1
-          tree /Library/Frameworks/GStreamer.framework/Versions/1.0/bin >> output_file.txt 2>&1
+          echo "$PATH" >> output_file.txt 2>&1
+          ls -l /Library/Frameworks/ >> output_file.txt 2>&1
+          tree /Library/Frameworks/ >> output_file.txt 2>&1
 
           export PATH=/Library/Frameworks/GStreamer.framework/Versions/1.0/bin:$PATH
           pkg-config --cflags gstreamer-1.0 >> output_file.txt 2>&1
