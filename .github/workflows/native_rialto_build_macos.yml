@@ -44,7 +44,7 @@ jobs:
       - name: Build Rialto
         run: |
           pkg-config --cflags gstreamer-1.0 > output_file.txt 2>&1
-          pkg-config -- gstreamer-1.0 > output_file.txt 2>&1
+          pkg-config --libs gstreamer-1.0 >> output_file.txt 2>&1
           
           cmake . -B build -DNATIVE_BUILD=ON -DRIALTO_BUILD_TYPE="Debug" >> output_file.txt 2>&1
           if [ $? -eq 0 ]
