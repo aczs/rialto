@@ -21,7 +21,21 @@
 # correct. This workflow shall fail if any code has been changed by clang-format. Logs
 # are uploaded on failure.
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 name: clang-format
+
 
 # Controls when the workflow will run
 on:
@@ -66,6 +80,7 @@ jobs:
       # Run the prgram with rialto config
       - name: Run clang-format
         run: |
+              echo "::warning::Code coverage decreased2"
               find . -regex '.*\.\(cpp\|hpp\|cu\|c\|h\)' -exec clang-format-12 -style=file -n --Werror {} \; &> clang-format_errors.log
 
       # Process the clang-format errors and generate a junit xml file
@@ -73,7 +88,9 @@ jobs:
       - name: Process clang-format results
         id: create-clang-format-xml
         if: failure() || success()
-        run: python scripts/clang-format/process_clang-format_errors.py
+        run: |
+              python scripts/clang-format/process_clang-format_errors.py
+              echo "::warning::Code coverage decreased"
 
       # Report the errors on failure using the xml file
       - name: Check results
